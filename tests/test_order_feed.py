@@ -20,21 +20,21 @@ class TestOrderFeedPage:
 
         logon_page = LogonPage(driver)
         logon_page.get_page(Urls.URL_LOGIN_PAGE)
-        logon_page.check_logon_page()
+        assert logon_page.check_logon_page() != None
         logon_page.logon_by_logon_button(data.my_email, data.my_password)
 
-        main_page.check_main_page()
+        assert main_page.check_main_page() != None
         main_page.go_to_order_feed_page()
 
-        order_feed_page.check_order_feed_page()
+        assert order_feed_page.check_order_feed_page() != None
         completed_all_before, completed_today_before = (order_feed_page.get_burgers_numbers())
         order_feed_page.go_to_main_page()
 
-        main_page.check_main_page()
+        assert main_page.check_main_page() != None
         order_number = main_page.create_order()
         main_page.go_to_order_feed_page()
 
-        order_feed_page.check_order_feed_page()
+        assert order_feed_page.check_order_feed_page() != None
         completed_all_after, completed_today_after = order_feed_page.get_burgers_numbers()
         order_feed_page.check_order_in_order_feed_list(order_number)
         order_in_status_box = order_feed_page.check_current_order_in_status_box(order_number)

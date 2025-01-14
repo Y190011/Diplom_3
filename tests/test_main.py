@@ -17,7 +17,9 @@ class TestMainPage:
         account_page = AccountPage(driver)
         logon_page.get_page(Urls.URL_LOGIN_PAGE)
         logon_page.logon_by_logon_button(data.my_email, data.my_password)
+        assert main_page.check_main_page() != None
         order_num = main_page.create_order()
+        assert order_num != None
 
     @allure.step("Выполняем проверку модальных окон ингредиентов")
     def test_ingredient_window(self, driver):
@@ -25,6 +27,7 @@ class TestMainPage:
         main_page = MainPage(driver)
         logon_page.get_page(Urls.URL_LOGIN_PAGE)
         logon_page.logon_by_logon_button(data.my_email, data.my_password)
+        assert main_page.check_main_page() != None
         main_page.ingredient_window()
 
 

@@ -18,10 +18,10 @@ class TestAccount:
         account_page = AccountPage(driver)
         logon_page.get_page(Urls.URL_LOGIN_PAGE)
         logon_page.logon_by_logon_button(data.my_email, data.my_password)
-        main_page.check_main_page()
+        assert main_page.check_main_page() != None
         main_page.go_to_personal_account()
-        account_page.check_account_page()
+        assert account_page.check_account_page() != None
         account_page.go_to_order_history()
-        account_page.check_order_first_history_item()
+        assert account_page.check_order_first_history_item() != None
         account_page.account_logout()
-        logon_page.check_logon_page()
+        assert logon_page.check_logon_page() != None

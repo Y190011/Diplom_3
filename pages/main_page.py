@@ -7,11 +7,11 @@ class MainPage(BasePage):
 
     @allure.step("Выполняем переход из Конструктор в Личный кабинет")
     def go_to_personal_account(self):
-        self.click_to_element(MainPageLocators.MAIN_ACCOUNT_URL)
+        assert self.click_to_element(MainPageLocators.MAIN_ACCOUNT_URL)  != None
 
     @allure.step("Проверяем переход на страницу Конструктор (главную)")
     def check_main_page(self):
-        self.find_element_with_wait(MainPageLocators.MAIN_TITLE)
+        return self.find_element_with_wait(MainPageLocators.MAIN_TITLE)
 
     @allure.step("Перетаскиваем ингредиенты, проверяем счетчики ингредиентов")
     def create_burger_1_in_basket(self):
@@ -43,7 +43,7 @@ class MainPage(BasePage):
 
     @allure.step("Нажимаем кнопку 'Создание заказа'")
     def create_order_for_burger_in_basket(self):
-        self.click_to_element(MainPageLocators.MAIN_CREATE_ORDER_BUTTON)
+        assert self.click_to_element(MainPageLocators.MAIN_CREATE_ORDER_BUTTON) != None
 
     @allure.step("Ожидаем и получаем номер созданного заказа")
     def get_order_num_not_equal_n9(self):
@@ -51,7 +51,7 @@ class MainPage(BasePage):
 
     @allure.step("Закрываем модальное окно кликом по крестику")
     def close_order_modal_window(self):
-        self.click_to_element(MainPageLocators.MAIN_MODAL_ORDER_CLOSE)
+        assert self.click_to_element(MainPageLocators.MAIN_MODAL_ORDER_CLOSE) != None
 
     @allure.step("Перетаскиваем ингредиент - {ingredient_name}")
     def drag_and_drop(self, locator_from, locator_to, ingredient_name):
@@ -62,24 +62,24 @@ class MainPage(BasePage):
 
     @allure.step("Тестируем модальные окна деталей ингредиентов - булка, соус, начинка")
     def ingredient_window(self):
-        self.click_to_element(MainPageLocators.MAIN_BUN_TAB_BUTTON)
-        self.click_to_element(MainPageLocators.MAIN_CRATOR_BUN)
+        assert self.click_to_element(MainPageLocators.MAIN_BUN_TAB_BUTTON)   != None
+        assert self.click_to_element(MainPageLocators.MAIN_CRATOR_BUN)       != None
         self.find_element_with_wait(MainPageLocators.MAIN_INGREDIENT_WINDOW_TITLE)
         self.find_element_with_wait(MainPageLocators.MAIN_INGREDIENT_CRATOR_BUN)
-        self.click_to_element(MainPageLocators.MAIN_MODAL_ORDER_CLOSE)
+        assert self.click_to_element(MainPageLocators.MAIN_MODAL_ORDER_CLOSE) != None
 
-        self.click_to_element(MainPageLocators.MAIN_SAUCE_TAB_BUTTON)
-        self.click_to_element(MainPageLocators.MAIN_SPICY_SAUCE)
+        assert self.click_to_element(MainPageLocators.MAIN_SAUCE_TAB_BUTTON)  != None
+        assert self.click_to_element(MainPageLocators.MAIN_SPICY_SAUCE)       != None
         self.find_element_with_wait(MainPageLocators.MAIN_INGREDIENT_WINDOW_TITLE)
         self.find_element_with_wait(MainPageLocators.MAIN_INGREDIENT_SPICY_SAUCE)
-        self.click_to_element(MainPageLocators.MAIN_MODAL_ORDER_CLOSE)
+        assert self.click_to_element(MainPageLocators.MAIN_MODAL_ORDER_CLOSE) != None
 
-        self.click_to_element(MainPageLocators.MAIN_FILLINGS_TAB_BUTTON)
-        self.click_to_element(MainPageLocators.MAIN_BEEF_FILLINGS)
+        assert self.click_to_element(MainPageLocators.MAIN_FILLINGS_TAB_BUTTON) != None
+        assert self.click_to_element(MainPageLocators.MAIN_BEEF_FILLINGS) != None
         self.find_element_with_wait(MainPageLocators.MAIN_INGREDIENT_WINDOW_TITLE)
         self.find_element_with_wait(MainPageLocators.MAIN_INGREDIENT_BEEF_FILLINGS)
-        self.click_to_element(MainPageLocators.MAIN_MODAL_ORDER_CLOSE)
+        assert self.click_to_element(MainPageLocators.MAIN_MODAL_ORDER_CLOSE)   != None
 
     @allure.step("Тестируем переход cо страницы Конструктор на страницу Лента заказов")
     def go_to_order_feed_page(self):
-        self.click_to_element(MainPageLocators.MAIN_ORDER_FEED_URL)
+        assert self.click_to_element(MainPageLocators.MAIN_ORDER_FEED_URL)     != None

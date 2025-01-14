@@ -7,11 +7,11 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Проверяем переход на страницу Лента заказов")
     def check_order_feed_page(self):
-        self.find_element_with_wait(OrderFeedPageLocators.ORDER_FEED_PAGE_TITLE)
+        return self.find_element_with_wait(OrderFeedPageLocators.ORDER_FEED_PAGE_TITLE)
 
     @allure.step("Выполняем переход со страницы Лента заказов на страницу Конструктор (главную)")
     def go_to_main_page(self):
-        self.click_to_element(OrderFeedPageLocators.ORDER_FEED_CONSTRUCTOR_URL)
+        assert self.click_to_element(OrderFeedPageLocators.ORDER_FEED_CONSTRUCTOR_URL) != None
 
     @allure.step("Получаем текущие показания счетчиков 'Выполнено за все время:' и 'Выполнено за сегодня:'")
     def get_burgers_numbers(self):
@@ -21,7 +21,7 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Выполняем переход в Личный кабинет")
     def go_to_account_page(self):
-        self.click_to_element(OrderFeedPageLocators.ORDER_FEED_ACCOUNT_URL)
+        assert self.click_to_element(OrderFeedPageLocators.ORDER_FEED_ACCOUNT_URL) != None
 
     @allure.step("Получаем Status Box Ленты заказов")
     def get_status_box_list(self):
@@ -40,10 +40,10 @@ class OrderFeedPage(BasePage):
         locator_num = self.format_locators_text(OrderFeedPageLocators.ORDER_FEED_FIND_ORDER_IN_FEED, order_number)
         self.scroll_to_element(locator_num)
         locator_click = self.format_locators_text(OrderFeedPageLocators.ORDER_FEED_CLICK_ORDER_IN_FEED, order_number)
-        self.click_to_element(locator_click)
+        assert self.click_to_element(locator_click) != None
         self.find_element_with_wait(OrderFeedPageLocators.ORDER_FEED_BURGER_MODAL_TITLE)
         locator_burger_modal_number = (
             self.format_locators_text(OrderFeedPageLocators.ORDER_FEED_BURGER_MODAL_TITLE, order_number))
         self.find_element_with_wait(locator_burger_modal_number)
-        self.click_to_element(OrderFeedPageLocators.ORDER_FEED_BURGER_MODAL_CLOSE)
+        assert self.click_to_element(OrderFeedPageLocators.ORDER_FEED_BURGER_MODAL_CLOSE) != None
 

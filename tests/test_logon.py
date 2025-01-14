@@ -12,21 +12,21 @@ class TestRestorePassword:
     def test_logon_via_entrance(self, driver):
         logon_page = LogonPage(driver)
         logon_page.get_page(Urls.URL_LOGIN_PAGE)
-        logon_page.check_logon_page()
+        assert logon_page.check_logon_page() != None
         logon_page.logon_by_logon_button(data.my_email, data.my_password)
 
     @allure.step("Тестируем восстановления пароля")
     def test_recovery_password_via_entrance(self, driver):
         logon_page = LogonPage(driver)
         logon_page.get_page(Urls.URL_LOGIN_PAGE)
-        logon_page.check_logon_page()
+        assert logon_page.check_logon_page() != None
         logon_page.recovery_password(data.my_email, data.my_password)
 
     @allure.step("Тестируем изменение статуса активности поля password при нажатии кнопки показать/скрыть пароль")
     def test_check_password_view(self, driver):
         logon_page = LogonPage(driver)
         logon_page.get_page(Urls.URL_LOGIN_PAGE)
-        logon_page.check_logon_page()
+        assert logon_page.check_logon_page() != None
         parent_tag_div_not_active_class_property, parent_tag_div_active_class_property = (
                logon_page.change_password_field_active_mode(data.my_email, data.my_password))
         assert data.password_parent_active_indicator not in parent_tag_div_not_active_class_property and \

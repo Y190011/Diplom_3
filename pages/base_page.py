@@ -19,6 +19,7 @@ class BasePage:
         WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable(locator))
         element = self.driver.find_element(*locator)
         self.driver.execute_script("arguments[0].click();", element)
+        return element
 
     def add_text_to_element(self, locator, text):
         self.find_element_with_wait(locator).send_keys(text)

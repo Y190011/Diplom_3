@@ -8,21 +8,21 @@ class LogonPage(BasePage):
     def logon_by_logon_button(self, email, password):
         self.add_text_to_element(LogonPageLocators.ENTRANCE_EMAIL, email)
         self.add_text_to_element(LogonPageLocators.ENTRANCE_PASSWORD, password)
-        self.click_to_element(LogonPageLocators.ENTRANCE_BUTTON)
+        return self.click_to_element(LogonPageLocators.ENTRANCE_BUTTON)
 
     @allure.step('Выполняем восстановление пароля')
     def recovery_password(self, email, password):
-        self.click_to_element(LogonPageLocators.ENTRANCE_FORGOT_PASSWORD_URL)
+        assert self.click_to_element(LogonPageLocators.ENTRANCE_FORGOT_PASSWORD_URL) != None
 
         self.find_element_with_wait(LogonPageLocators.RECOVERY_TITLE)
         self.add_text_to_element(LogonPageLocators.RECOVERY_EMAIL, email)
 
-        self.click_to_element(LogonPageLocators.RECOVERY_BUTTON)
+        assert self.click_to_element(LogonPageLocators.RECOVERY_BUTTON) != None
         self.find_element_with_wait(LogonPageLocators.RECOVERY_CODE_INPUT)
 
         self.add_text_to_element(LogonPageLocators.RECOVERY_PASSWORD, password)
-        self.click_to_element(LogonPageLocators.RECOVERY_SAVE_BUTTON)
-        self.click_to_element(LogonPageLocators.RECOVERY_LOGIN_URL)
+        assert self.click_to_element(LogonPageLocators.RECOVERY_SAVE_BUTTON) != None
+        assert self.click_to_element(LogonPageLocators.RECOVERY_LOGIN_URL) != None
         self.find_element_with_wait(LogonPageLocators.ENTRANCE_TITLE)
 
     @allure.step('Изменяем режима отображения пароля, проверяем результат')
@@ -38,6 +38,6 @@ class LogonPage(BasePage):
 
     @allure.step("Проверяем загрузку страницы авторизации")
     def check_logon_page(self):
-        self.find_element_with_wait(LogonPageLocators.ENTRANCE_TITLE)
+        return self.find_element_with_wait(LogonPageLocators.ENTRANCE_TITLE)
 
 
